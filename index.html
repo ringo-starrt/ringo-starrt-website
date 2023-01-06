@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Website</title>
+    <style type="text/css">
+        /* The video will be 100% of the width and height of the page */
+        video {
+            max-width: 100vw;
+            max-height: 100vh;
+            /* Ensure the video stays within the window bounds */
+            object-fit: cover;
+        }
+
+        body {
+            margin: 0px 0px 0px 0px;
+            background-color: black;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        const animFrame = () => {
+            const video = document.getElementById("whee");
+            if (!video) {
+                requestAnimationFrame(animFrame);
+                return;
+            }
+
+            video.muted = false;
+            video.play();
+
+            // IF the HTML5 video is not playing, try to mute and play it
+            if (video.paused) {
+                video.muted = true;
+                video.play();
+            }
+            else {
+                const overlay = document.getElementById("overlay");
+                if (overlay) {
+                    // Delete the overlay
+                    overlay.remove();
+                }
+            }
+
+            requestAnimationFrame(animFrame);
+        };
+        requestAnimationFrame(animFrame);
+
+    </script>
+</head>
+
+<body>
+    <div style="width: 100vw; height: 100vh; display: flex; justify-content: center;">
+        <!--A looping HTML5 video using "video.mp4" as a source with no controls  -->
+        <video id="whee" onloadeddata="this.play();" loop>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <div id="overlay"
+            style="position: absolute; top: 0px; left: 0px; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center;">
+            <h1>PRESS ANY BUTTON FOR JOY</h1>
+        </div>
+    </div>
+</body>
+
+</html>

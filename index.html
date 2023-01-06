@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>The Website</title>
+    <title>arrt</title>
     <style type="text/css">
         /* The video will be 100% of the width and height of the page */
         video {
@@ -24,7 +24,7 @@
         const animFrame = () => {
             const video = document.getElementById("whee");
             if (!video) {
-                requestAnimationFrame(animFrame);
+                setTimeout(animFrame, 200);
                 return;
             }
 
@@ -44,10 +44,9 @@
                 }
             }
 
-            requestAnimationFrame(animFrame);
+            setTimeout(animFrame, 200);
         };
-        requestAnimationFrame(animFrame);
-
+        setTimeout(animFrame, 200);
     </script>
 </head>
 
